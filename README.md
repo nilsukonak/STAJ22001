@@ -53,6 +53,7 @@ komutunu çalıştırın.
 Eğer sorun yaşarsanız flutter doctor komutunu çalıştırarak eksikleri görebilirsiniz.
 
 ## Proje yapısı
+```plaintext
 lib/
 ├── helpers/ → Yardımcı fonksiyonlar ,tekrar kullanılabilir küçük kod parçaları
 ├── mixins/ → Ortak özellikleri sınıflara eklemek için kullanılıyorlar
@@ -63,6 +64,6 @@ lib/
 ├── firebase_options.dart → Firebase konfigürasyon ayarları (FlutterFire CLI ile otomatik oluşturulur)
 ├── main.dart → Uygulamanın giriş noktası
 └── tasklist.dart → Görev listesini yöneten ekran
-
+```
 
 
