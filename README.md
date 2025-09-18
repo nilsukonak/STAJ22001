@@ -14,6 +14,7 @@ Uygulama demosu:
 ## Kurulum
 
 ##Gereksinimler 
+
 Flutter: 3.35.3-0.0.pre-2 (channel stable)
 
 Dart: 3.9.0
