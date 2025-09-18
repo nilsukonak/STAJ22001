@@ -1,12 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/helpers/firestore_helper.dart';
 import 'package:todoapp/helpers/validation_helper.dart';
 import 'package:todoapp/models/task_model.dart';
 import 'package:todoapp/screens/newtasks.dart';
 import 'package:todoapp/screens/tasks.dart';
-import 'package:todoapp/tasklist.dart';
+
 import 'package:todoapp/widgets/app_color.dart';
 import 'package:todoapp/widgets/chip_selector.dart';
 import 'package:todoapp/widgets/date_picker.dart';
@@ -26,7 +24,7 @@ class EditTask extends StatefulWidget {
 class _EditTaskState extends State<EditTask> {
   @override
   void initState() {
-    super.initState(); //oncei deeğrler gozuksn
+    super.initState();
     titlecont.text = widget.taskmodel.title;
     descriptioncont.text = widget.taskmodel.description;
     datecont.text = widget.taskmodel.date;
@@ -138,7 +136,6 @@ class _EditTaskState extends State<EditTask> {
                     backgroundColor: AppColors.buttonColor,
                   ),
                   onPressed: () async {
-                    //yeni geen degerleri widgetten alıp updatedtask modeline atayıp sonra modeli helper fonksta cagırıp orda kullanıyorum guncellee ord yapılıyo
                     if (_formKey.currentState!.validate()) {
                       final updatedTask = Taskmodel(
                         id: widget.taskmodel.id,
@@ -149,10 +146,10 @@ class _EditTaskState extends State<EditTask> {
                         category: categorycont.text,
                       );
                       await updatedTaskInFirestore(
+                        //firestore_helper fonksiyonu
                         updatedTask,
-                      ); //helperfonksu cagır
+                      );
                       Navigator.pushReplacement(
-                        //sadece pop context vardı ama tarih kısmı login yapmadan guncellenmiyodu o yuzden her seferinde taskı cagırıyoz taskın icndeki initstatet de fetch var o yuzden guncelleniyo heemn
                         context,
                         MaterialPageRoute(builder: (context) => Tasks()),
                       );

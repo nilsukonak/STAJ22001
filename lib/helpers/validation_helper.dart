@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-//edittask ve newtaskta titleyi kontrol etmke için helper func
+//edittask ve newtaskta titlenin boş olup olmadığını kontrol etmek için helper func
 String? validateNotEmpty(String? value, String fieldName) {
   if (value == null || value.isEmpty) {
     return '$fieldName bos donemez';

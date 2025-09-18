@@ -1,7 +1,4 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:todoapp/screens/newtasks.dart';
 
 const List<String> categorylist = <String>['Work', 'School', 'Self'];
 
@@ -15,11 +12,6 @@ class DropdownMenuExample extends StatefulWidget {
 typedef MenuEntry = DropdownMenuEntry<String>;
 
 class _DropdownMenuExampleState extends State<DropdownMenuExample> {
-  static final List<MenuEntry> menuEntries = UnmodifiableListView<MenuEntry>(
-    categorylist.map<MenuEntry>(
-      (String name) => MenuEntry(value: name, label: name),
-    ),
-  );
   String? dropdownValue;
   void initState() {
     super.initState();
@@ -29,18 +21,14 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12), // kenarlardan boşluk
+      padding: const EdgeInsets.symmetric(horizontal: 12),
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            dropdownValue ??
-                "Category", // başta 'Category', sonra seçilen değer
-            //style: const TextStyle(color: Colors.grey, fontSize: 16),
-          ),
+          Text(dropdownValue ?? "Category"),
           PopupMenuButton<String>(
-            icon: const Icon(Icons.arrow_drop_down), // Sadece ikon
+            icon: const Icon(Icons.arrow_drop_down),
             onSelected: (String value) {
               setState(() {
                 dropdownValue = value;

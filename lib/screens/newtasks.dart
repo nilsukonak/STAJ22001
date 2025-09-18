@@ -10,7 +10,6 @@ import 'package:todoapp/widgets/date_picker.dart';
 import 'package:todoapp/models/task_model.dart';
 import 'package:todoapp/widgets/chip_selector.dart';
 import 'package:todoapp/widgets/dropdown_menu.dart';
-import 'package:todoapp/helpers/validation_helper.dart';
 
 final _newformKey =
     GlobalKey<FormState>(); //title için validate ile boş kontrolü yapacağız
@@ -40,7 +39,6 @@ class Newtasks extends StatefulWidget {
 class _NewtasksState extends State<Newtasks> {
   @override
   void initState() {
-    //edittaskta duzenledgm son degerler new taskte de geliyodu bu yuzden temizledm
     super.initState();
     titlecont.clear();
     descriptioncont.clear();
@@ -94,7 +92,7 @@ class _NewtasksState extends State<Newtasks> {
               height: MediaQuery.of(context).size.height * 0.06,
 
               decoration: BoxDecoration(
-                color: AppColors.lightGray, //email fln onun rengi ve etrafı
+                color: AppColors.lightGray,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: TextFormField(
@@ -126,7 +124,7 @@ class _NewtasksState extends State<Newtasks> {
               height: MediaQuery.of(context).size.height * 0.06,
 
               decoration: BoxDecoration(
-                color: AppColors.lightGray, //email fln onun rengi ve etrafı
+                color: AppColors.lightGray,
                 borderRadius: BorderRadius.circular(15),
               ),
 
@@ -164,7 +162,7 @@ class _NewtasksState extends State<Newtasks> {
                       category: categorycont.text,
                     );
 
-                    //taskscollection sminde bir firestoreye referans olusturuyoz yani görevleri firestorede dogru yere kaydetmk icin kullanyoz
+                    //Görevleri firestorede dogru yere kaydetmek icin referans oluşturuyoruz
                     final tasksCollection = FirebaseFirestore.instance
                         .collection('user')
                         .doc(currentUserUid)

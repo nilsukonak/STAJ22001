@@ -9,10 +9,9 @@ mixin SigninMixin on State<Signin> {
 
   Future<void> SigninWithEmailAndPassword(String email, String password) async {
     try {
-      await services.signin(
-        emailcont.text,
-        passcontroller.text,
-      ); //services kodumda signin fonksuyla kaıt oluyo firebaseyr
+      await services.signin(emailcont.text, passcontroller.text);
+
+      ///auth_services.dart ta signin fonksiyonuyla beraber firebaseye kaydediyorum
       if (mounted) {
         Navigator.push(
           context,

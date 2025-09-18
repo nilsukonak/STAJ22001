@@ -17,8 +17,6 @@ mixin LoginMixin on State<Login> {
         password: password,
       );
       if (mounted) {
-        //sadeec ekrandaysan calıstr
-        //await ile çalışan uzun işlemler (örneğin Firebase ile giriş yapma) sırasında, kullanıcı başka sayfaya geçmiş olabilir. O zaman artık context geçersiz olur ve Navigator gibi şeyler çalıştırmak hata verir.
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const Tasks()),

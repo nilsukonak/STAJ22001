@@ -17,10 +17,9 @@ class Tasks extends StatefulWidget {
 class _TasksState extends State<Tasks> {
   @override
   Widget build(BuildContext context) {
-    // ignore: deprecated_member_use ?? willpopscope hata verince
+    // ignore: deprecated_member_use ?? sürümden dolayı willpopscope hata veriyor
     return WillPopScope(
       onWillPop: () async {
-        //geri tusunu basınca onceki işleme değil giriş sayfasına dönsn
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => Login()),
@@ -57,9 +56,9 @@ class _TasksState extends State<Tasks> {
                 ],
               ),
 
-              Tasklist(
-                selectedFilter: selectedFilter,
-              ), //taskk icindr tasklist cagırılarak birbirine baglantı dart dosyaları
+              Tasklist(selectedFilter: selectedFilter),
+
+              ///taskliste değişkeni gönderiyorum
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.92,
                 height: MediaQuery.of(context).size.height * 0.06,

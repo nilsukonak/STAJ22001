@@ -1,7 +1,7 @@
 //TASK İÇİN CLASS
 
 class Taskmodel {
-  late String? id; //firestorede her görevn idsi var edistask yaaprken lazm
+  late String? id;
   late String title;
   late String description;
   late String date;
@@ -12,10 +12,10 @@ class Taskmodel {
     this.id,
     required this.title,
     required this.description,
-    required this.date, //parametreyi zorunlu tutar ama deegr kontrollerini yapmz yani " " deegr de olblr gorevde
+    required this.date,
     required this.priority,
     required this.category,
-    this.isdone = false, 
+    this.isdone = false,
   });
   //firebasede her sey json formatında ama bnm projede kulanmak icin bu jsonu modele cevirmem lazm FROMJSON  ile beraber
   factory Taskmodel.fromJson(Map<String, dynamic> json, String id) {
@@ -29,7 +29,7 @@ class Taskmodel {
       isdone: json['isdone'] ?? false,
     );
   }
-  //şimdi mesela modelden giriln gorevlern frebaseye kaydetmke icin json formatına gerş cevirmemz lazm
+  //Modelden girilen görevlern firebase kaydetmek icin json formatına cevirmemiz lazım
   Map<String, dynamic> toJson() {
     return {
       'title': title,
@@ -51,7 +51,6 @@ class Taskmodel {
     bool? isdone,
   }) {
     return Taskmodel(
-      //copywitle eski asıl nesneyi değiştirmiyoz eni nesne olstrdk bazı alanlaı eğiştk simdi o nesneyi yeni nsneyi returnal dondurmemz lzm
       id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,

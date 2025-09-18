@@ -33,13 +33,11 @@ class _ChipappState extends State<Chipapp> {
     return Wrap(
       spacing: MediaQuery.of(context).size.width * 0.04,
       children: List.generate(chiplist.length, (index) {
-        //mainde 3 kere donmemek icin
         return ChoiceChip(
           label: Text(
             chiplist[index],
             style: TextStyle(
               color: selectedindex == index ? Colors.white : Colors.black,
-              //tıklanınca beyaz olsn secilen chipn texti
             ),
           ),
 
@@ -55,8 +53,8 @@ class _ChipappState extends State<Chipapp> {
             }
           },
 
-          shape: StadiumBorder(), //yuvarlak olması için
-          //avatar: CircleAvatar(backgroundColor: containerrenk), //tik iconu
+          shape: StadiumBorder(),
+
           selectedColor: AppColors.buttonColor,
           labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
         );

@@ -6,37 +6,28 @@ import 'package:todoapp/tasklist.dart';
 
 /// Firebase Task Fetch
 /// Description:
-///firebasedeki gırevleri taskmodel tipnde dondurmek icin helperfunc task ve listtaskta kullanılıyo
+
 Future<List<Taskmodel>> fetchTasksFromFirestore() async {
-  final uid =
-      FirebaseAuth
-          .instance
-          .currentUser
-          ?.uid; //suanda girş yapan kullanıcının idsini al yoksa null iilem yapılmz cıkılır
-  // if (uid == null) return;
+  final uid = FirebaseAuth.instance.currentUser?.uid;
 
-  final snapshot =
-      await FirebaseFirestore.instance
-          .collection('user')
-          .doc(uid) //girş yapan kullanıcın uidi
-          .collection('tasks') //onun gorevleri
-          .get(); // get ile çekiypruz
+  final snapshot = await FirebaseFirestore.instance
+      .collection('user')
+      .doc(uid)
+      .collection('tasks')
+      .get();
 
-  final loadedTasks =
-      snapshot.docs.map((doc) {
-        //firestoredeki belgeelri alıp donusturuypruz
-        final data = doc.data();
-        return Taskmodel(
-          id: doc.id,
-          title:
-              data['title'] ?? '', //firestorede o alan eksikse bos string ver
-          description: data['description'] ?? '',
-          date: data['date'] ?? '',
-          priority: data['priority'] ?? '',
-          category: data['category'] ?? '',
-          isdone: data['isdone'] ?? false,
-        );
-      }).toList();
+  final loadedTasks = snapshot.docs.map((doc) {
+    final data = doc.data();
+    return Taskmodel(
+      id: doc.id,
+      title: data['title'] ?? '',
+      description: data['description'] ?? '',
+      date: data['date'] ?? '',
+      priority: data['priority'] ?? '',
+      category: data['category'] ?? '',
+      isdone: data['isdone'] ?? false,
+    );
+  }).toList();
   return loadedTasks;
 }
 
@@ -83,18 +74,12 @@ Future<void> dismisiblefunc(task) async {
 
 //isdoneyi guncelicek
 Future<void> updateisdone(Taskmodel task, bool value) async {
-  final indexInMainList = tasklist.indexWhere(
-    (t) => t.id == task.id,
-    //t taskmodeldeki bi şey eger bu şey taskın.idsine esitse indexmainlist tum gorevlern oldugu liste burda where ile o şeyi buluyo
-    //t aslnda tum gorevleri tek tek kontorl eiyo eger guncellenmekistenein idsine esitse idexwere ile bunu kacıncı indeksteki oldunu buluyo
-  );
+  final indexInMainList = tasklist.indexWhere((t) => t.id == task.id);
 
-  //filtered taskı guncelliyo secilen true ya da falsey egore
+  //filtered taskı guncelliyo secilene göre
   if (indexInMainList != -1) {
-    //bulamazsa bu bulursa
     tasklist[indexInMainList] = tasklist[indexInMainList].copyWith(
-      isdone:
-          value, //gorevn kopyasını alıyorz sadece value aalnıı guncelliypruz kopyadaki alana tru false atıyoruz
+      isdone: value,
     );
   }
   // filteredTasks'ı yeniden filtrele

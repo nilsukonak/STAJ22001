@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:todoapp/screens/login.dart';
 import 'package:flutter/services.dart';
 import 'package:todoapp/services/auth_services.dart';
 import 'package:todoapp/widgets/app_color.dart';
@@ -89,7 +88,7 @@ class _SigninState extends State<Signin> with SigninMixin {
                   ).showSnackBar(SnackBar(content: Text('hata')));
                 } else {
                   await SigninWithEmailAndPassword(
-                    //hata yoksa bu bilgilieri fonksa gonderp girşi orda sağlıck burda bidah login cagırmaya gerek yok
+                    ///Signinmixin içinde tanımlı fonksiyon
                     emailcont.text.trim(),
                     passcontroller.text.trim(),
                   );

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/widgets/app_color.dart';
@@ -15,8 +14,9 @@ class Tasklist extends StatefulWidget {
 }
 
 List<Taskmodel> tasklist = [];
-List<Taskmodel> filteredTasks =
-    []; //gorevleri gosteren ekranların filtrelenmesi içn
+List<Taskmodel> filteredTasks = [];
+
+///Görevleri gosteren ekranların filtrelenmesi içn
 
 class _TasklistState extends State<Tasklist> {
   @override
@@ -27,10 +27,10 @@ class _TasklistState extends State<Tasklist> {
 
   @override
   void didUpdateWidget(covariant Tasklist oldWidget) {
-    //bu did fluttern hazır fonksu,widget değiştiğind calısır YANİ ALL SECİNCE COMPLETED SECİNCE KENDİ KENDİNE TETİKLENİYO ZATEN sonra eegr eski filtreyle secilen aynı seğilde aplly ile filtreyi uyguladk
+    ///widget değişince çalışan hazır fonksiyon
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedFilter != widget.selectedFilter) {
-      // filtre değişmiş, filtreyi yeniden uygula
+      // filtre değişmiş o yüzden  filtreyi yeniden uygula
 
       _applyFilter();
     }
@@ -38,7 +38,6 @@ class _TasklistState extends State<Tasklist> {
 
   void _applyFilter() {
     setState(() {
-      //burda filtreleme yapılabilir
       if (widget.selectedFilter == 'Active') {
         filteredTasks = tasklist.where((task) => task.isdone == false).toList();
       } else if (widget.selectedFilter == 'Completed') {
@@ -48,7 +47,7 @@ class _TasklistState extends State<Tasklist> {
         filteredTasks.sort((a, b) {
           //sıralama
           if (a.isdone == b.isdone) return 0; //aynıysa değişmez
-          return a.isdone == false ? -1 : 1; //tekli değilse -1 yani uste
+          return a.isdone == false ? -1 : 1;
         });
       }
     });
@@ -75,15 +74,17 @@ class _TasklistState extends State<Tasklist> {
               itemCount: filteredTasks.length,
               itemBuilder: (BuildContext context, int index) {
                 final task = filteredTasks[index];
-                //bu taskitems ddiğmz liste yukarda stful widget icinde tanımlandı o yuzden widgetten cagırıypruz listeyi
-                //silme şeyi
+
+                ///Silme olayı
                 return Dismissible(
                   key: Key(task.id ?? index.toString()),
                   direction: DismissDirection.endToStart, // Sadece sağdan sola
                   onDismissed: (direction) async {
                     final uid = FirebaseAuth.instance.currentUser?.uid;
                     if (uid != null && task.id != null) {
-                      await dismisiblefunc(task); //???
+                      await dismisiblefunc(
+                        task,
+                      ); //firestore_helper.darttaki fonksiyon ile silme işlemini yapıyorum
 
                       setState(() {
                         tasklist.removeWhere((t) => t.id == task.id);
@@ -103,11 +104,9 @@ class _TasklistState extends State<Tasklist> {
                   ),
 
                   child: Opacity(
-                    opacity:
-                        task.isdone ? 0.7 : 1.0, //tıklananın opaklıgı azalcak
+                    opacity: task.isdone ? 0.7 : 1.0,
 
                     child: Card(
-                      //tıklanablr olck edt sayfası acılsn diye
                       color: Colors.white,
                       child: InkWell(
                         onTap: () {
@@ -117,7 +116,6 @@ class _TasklistState extends State<Tasklist> {
                               builder: (context) => EditTask(taskmodel: task),
                             ),
                           ).then((value) {
-                            //edit sayfasından dönünce listeyi tekrar yükle
                             _loadtask();
                           });
                         },
@@ -140,16 +138,14 @@ class _TasklistState extends State<Tasklist> {
                               Text(
                                 task.title,
                                 style: TextStyle(
-                                  decoration:
-                                      task.isdone
-                                          ? TextDecoration.lineThrough
-                                          : TextDecoration.none,
+                                  decoration: task.isdone
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
                                   // ignore: deprecated_member_use
-                                  color:
-                                      task.isdone
-                                          // ignore: deprecated_member_use
-                                          ? Colors.black.withOpacity(0.7)
-                                          : Colors.black,
+                                  color: task.isdone
+                                      // ignore: deprecated_member_use
+                                      ? Colors.black.withOpacity(0.7)
+                                      : Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),

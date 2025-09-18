@@ -84,7 +84,7 @@ class _SigninState extends State<Login> with LoginMixin {
               ),
               onPressed: () async {
                 await LogInWithEmailAndPassword(
-                  //fonksn napcagını yukarda tanımladk burda kullanıyoruz burdan degeri alıp yukarı fonksa gidiyo eger baarılı olursa yine yukarda task sayfasına geciriyo
+                  ///loginmixn içinde tanımlı fonksiyon
                   emailcont.text.trim(),
                   passcontroller.text.trim(),
                 );
@@ -107,6 +107,7 @@ class _SigninState extends State<Login> with LoginMixin {
               ),
               onPressed: () => navigateToSignIn(),
 
+              ///loginmixn içinde tanımlı fonksiyon
               child: Text(
                 'Sign up',
                 style: TextStyle(color: Colors.black, fontSize: 20),
