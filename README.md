@@ -1,8 +1,43 @@
 # ToDoApp
 
 Flutter ile geliştirilmiş basit bir yapılacaklar listesi (ToDo) uygulaması.
+Uygulama demosu:
+## Demo
+[▶ Uygulama Demosunu İzle](demo.mp4)
+
+## Ekran Görüntüleri
+
+| Kayıt olma Ekranı | Giriş Ekranı | Görev Listesi | Görev Ekleme | Görev Düzenleme 
+|--------------|---------------|---------------|
+| ![Ekran1](screenshots/1..png) | ![Ekran2](screenshots/2..png) | ![Ekran3](screenshots/3..png)| ![Ekran4](screenshots/4..png) | ![Ekran5](screenshots/5..png)  |
 
 ## Kurulum
+
+##Gereksinimler 
+Flutter: 3.35.3-0.0.pre-2 (channel stable)
+
+Dart: 3.9.0
+
+VS Code: 1.104.1 (user setup)
+
+Android Studio: Ladybug Feature Drop | 2024.2.2 Patch 2
+
+Emulator: Pixel 5 API 33 (Android 13.0 "Tiramisu") x86_64
+
+
+
+## Kullanılan Paketler
+
+firebase_core: 3.15.1
+
+firebase_auth: 5.6.2
+
+cloud_firestore: 5.6.11
+
+fluttertoast: 8.2.12
+
+image_field: 0.0.12
+
 
 Projeyi çalıştırmak için :
  Bu projeyi klonlayın:
@@ -27,21 +62,17 @@ flutter run
 komutunu çalıştırın. 
 Eğer sorun yaşarsanız flutter doctor komutunu çalıştırarak eksikleri görebilirsiniz.
 
+##Proje yapısı
+lib/
+├── helpers/ → Yardımcı fonksiyonlar ,tekrar kullanılabilir küçük kod parçaları
+├── mixins/ → Ortak özellikleri sınıflara eklemek için kullanılıyorlar
+├── models/ → Veri modeli
+├── screens/ → Uygulamanın ekranları
+├── services/ → Firebase ile etkileşim sağlayan kısım 
+├── widgets/ → Tekrar kullanılabilir özel widgetlar
+├── firebase_options.dart → Firebase konfigürasyon ayarları (FlutterFire CLI ile otomatik oluşturulur)
+├── main.dart → Uygulamanın giriş noktası
+└── tasklist.dart → Görev listesini yöneten ekran
 
 
 
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
