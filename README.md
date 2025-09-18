@@ -9,7 +9,7 @@ Uygulama demosu:
 
 | Kayıt Olma | Giriş | Görev Listesi | Görev Ekleme | Görev Düzenleme |
 |------------|-------|---------------|--------------|-----------------|
-| ![Ekran1](screenshots/1..png) | ![Ekran2](screenshots/2..png) | ![Ekran3](screenshots/3..png) | ![Ekran4](screenshots/4..png) | ![Ekran5](screenshots/5..png) |
+| ![Ekran1](screenshots/1..png) | ![Ekran2](screenshots/2..png) | ![Ekran3](screenshots/3..png) | ![Ekran4](screenshots/5..png) | ![Ekran5](screenshots/4..png) |
 
 ## Kurulum
 
@@ -52,7 +52,7 @@ flutter run
 komutunu çalıştırın. 
 Eğer sorun yaşarsanız flutter doctor komutunu çalıştırarak eksikleri görebilirsiniz.
 
-##Proje yapısı
+## Proje yapısı
 lib/
 ├── helpers/ → Yardımcı fonksiyonlar ,tekrar kullanılabilir küçük kod parçaları
 ├── mixins/ → Ortak özellikleri sınıflara eklemek için kullanılıyorlar
